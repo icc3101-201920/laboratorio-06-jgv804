@@ -18,13 +18,15 @@ namespace Laboratorio_5_OOP_201902
             {
                 if (hand.Cards[i].GetType().Name == nameof(CombatCard))
                 {
-                    Console.ForegroundColor = red;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write( $"|({hand.Cards[i].Id}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} :{hand.Cards[i].AttackPoints} |");
+                    Console.ResetColor();
                 }
                 else
                 {
-                    Console.ForegroundColor = blue;
+                    Console.ForegroundColor = ConsoleCole.Blue;
                     Console.Write( $"|({hand.Cards[i].Id}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} |");
+                    Console.ResetColor();
                 }
 
             }
@@ -48,6 +50,39 @@ namespace Laboratorio_5_OOP_201902
             {
                 Console.WriteLine($"({i}) {captains[i].Name} : {captains[i].Effect}");
             }
+        }
+        public static void ConsoleError(string message)
+        {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Beep();
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+        public static int GetUserInput(int maxInput, bool stopper = false)
+        {
+            string option = Console.ReadLine();
+            int optionNumber;
+            while (!int.TryParse(option, out optionNumber))
+            {
+                ConsoleError("Input must be a number");
+                option = Console.ReadLine();
+            }
+            return optionNumber;
+        }
+        public static void ShowListOption(string message=null, List<String> options)
+        {
+            Console.WriteLine(message);
+            for (int i = 0; i < options.Count; i++)
+            {
+                Console.WriteLine($"({i}) {options[i]}");
+            }
+        }
+        public static void ShowProgramMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
     }
 }
