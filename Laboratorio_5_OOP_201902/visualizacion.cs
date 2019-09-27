@@ -5,12 +5,13 @@ using System.IO;
 
 namespace Laboratorio_5_OOP_201902
 {
-    public static class visualizacion
+    public static class Visualizacion
     {
 
+        
         public static void ShowHand(Hand hand)
         {
-            Console.SetCursorPosition(0, 14);
+            
             Console.WriteLine("Hand: ");
             
             for (int i = 0; i < hand.Cards.Count; i++)
@@ -18,12 +19,12 @@ namespace Laboratorio_5_OOP_201902
                 if (hand.Cards[i].GetType().Name == nameof(CombatCard))
                 {
                     Console.ForegroundColor = red;
-                    Console.Write( $"|({hand.Cards[i].Id}) " + hand.Cards[i].Name + $" {hand.Cards[i].type} :{hand.Cards[i].attackpoints} |");
+                    Console.Write( $"|({hand.Cards[i].Id}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} :{hand.Cards[i].AttackPoints} |");
                 }
                 else
                 {
                     Console.ForegroundColor = blue;
-                    Console.Write( $"|({hand.Cards[i].Id}) " + hand.Cards[i].Name + $" {hand.Cards[i].type} |");
+                    Console.Write( $"|({hand.Cards[i].Id}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} |");
                 }
 
             }
@@ -32,13 +33,21 @@ namespace Laboratorio_5_OOP_201902
         }
         public static void ShowDecks(List<Deck> decks)
         {
-            Console.SetCursorPosition(0, 2);
-            Console.WriteLine("select one deck:");
-            for (i = 0; i < decks.Count; i++)
+            
+            Console.WriteLine("Select one deck:");
+            for (int i = 0; i < decks.Count; i++)
             {
                 Console.WriteLine($"{(i)} Deck {i + 1}");
             }
 
+        }
+        public static void ShowCaptains(List<SpecialCard> captains)
+        {
+            Console.WriteLine("Select one captain:");
+            for(int i = 0; i < captains.Count; i++)
+            {
+                Console.WriteLine($"({i}) {captains[i].Name} : {captains[i].Effect}");
+            }
         }
     }
 }
