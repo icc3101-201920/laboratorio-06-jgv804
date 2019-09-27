@@ -63,12 +63,46 @@ namespace Laboratorio_5_OOP_201902
         {
             string option = Console.ReadLine();
             int optionNumber;
-            while (!int.TryParse(option, out optionNumber))
+            if (stopper)
             {
-                ConsoleError("Input must be a number");
-                option = Console.ReadLine();
+
+                while (!int.TryParse(option, out optionNumber))
+                {
+                    ConsoleError("Input must be a number");
+                    option = Console.ReadLine();
+                }
+
+                if (-1 < optionNumber < maxInput)
+                {
+                    return optionNumber;
+                }
+                else
+                {
+                    ConsoleError("imput out of range");
+                    option = Console.ReadLine();
+                }
+            }
+            else
+            {
+                while (!int.TryParse(option, out optionNumber))
+                {
+                    ConsoleError("Input must be a number");
+                    option = Console.ReadLine();
+                }
+
+                if (0 < optionNumber < maxInput)
+                {
+                    return optionNumber;
+                }
+                else
+                {
+                    ConsoleError("imput out of range");
+                    option = Console.ReadLine();
+                }
             }
             return optionNumber;
+            
+           
         }
         public static void ShowListOption(string message=null, List<String> options)
         {
