@@ -122,5 +122,9 @@ namespace Laboratorio_5_OOP_201902
             Console.ResetColor();
             
         }
+        public static void ClearConsole()
+        {
+            Console.Clear();
+        }
     }
 }
