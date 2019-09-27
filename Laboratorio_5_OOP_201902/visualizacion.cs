@@ -22,13 +22,13 @@ namespace Laboratorio_5_OOP_201902
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     CombatCard Combi =(CombatCard)hand.Cards[i];
-                    Console.Write( $"|({i}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} :{Combi.AttackPoints} |");
+                    Console.Write( $"|({i}) " + hand.Cards[i].Name + $" ({hand.Cards[i].Type}) : {Combi.AttackPoints} |");
                     Console.ResetColor();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write( $"|({i}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} |");
+                    Console.Write( $"|({i}) " + hand.Cards[i].Name + $" ({hand.Cards[i].Type}) |");
                     Console.ResetColor();
                 }
 
@@ -42,7 +42,7 @@ namespace Laboratorio_5_OOP_201902
             Console.WriteLine("Select one deck:");
             for (int i = 0; i < decks.Count; i++)
             {
-                Console.WriteLine($"{(i)} Deck {i + 1}");
+                Console.WriteLine($"({i}) Deck {i + 1}");
             }
 
         }
@@ -75,7 +75,7 @@ namespace Laboratorio_5_OOP_201902
                     option = Console.ReadLine();
                 }
 
-                if (-1 < optionNumber & optionNumber < maxInput)
+                if (-1 <= optionNumber & optionNumber < maxInput)
                 {
                     return optionNumber;
                 }
@@ -93,7 +93,7 @@ namespace Laboratorio_5_OOP_201902
                     option = Console.ReadLine();
                 }
 
-                if (0 < optionNumber & optionNumber < maxInput)
+                if (0 <= optionNumber & optionNumber < maxInput)
                 {
                     return optionNumber;
                 }

@@ -157,6 +157,7 @@ namespace Laboratorio_5_OOP_201902
         public void ChooseCaptainCard(SpecialCard captainCard)
         {
             Captain = captainCard;
+            Board.AddCard(captainCard,this.Id);
         }
 
         public Card CreateTempCard(int cardId, bool useDeck = true)

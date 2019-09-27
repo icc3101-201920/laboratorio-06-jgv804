@@ -30,6 +30,10 @@ namespace Laboratorio_5_OOP_201902
             {
                 return this.players;
             }
+            set
+            {
+                players = value;
+            }
         }
         public Player ActivePlayer
         {
@@ -62,6 +66,10 @@ namespace Laboratorio_5_OOP_201902
             {
                 return this.boardGame;
             }
+            set
+            {
+                boardGame = value;
+            }
         }
 
         //Metodos
@@ -93,7 +101,48 @@ namespace Laboratorio_5_OOP_201902
         }
         public void Play()
         {
-            throw new NotImplementedException();
+            List<string> changecard = new List<string>();
+            changecard.Add("Change Card");
+            changecard.Add("Pass");
+            Visualizacion.ShowProgramMessage("Player "+ActivePlayer.Id+" please select your deck");
+            Visualizacion.ShowDecks(Decks);
+            int choice=Visualizacion.GetUserInput(2);
+            ActivePlayer.Deck = Decks[choice];
+            Visualizacion.ShowCaptains(Captains);
+            int choice2 = Visualizacion.GetUserInput(2);
+            ActivePlayer.ChooseCaptainCard(Captains[choice2]);
+            ActivePlayer.FirstHand();
+            Visualizacion.ShowHand(ActivePlayer.Hand);
+            Visualizacion.ShowListOption(changecard);
+            
+            int choice3=Visualizacion.GetUserInput(2);
+            int p = 0;
+            if (choice3 == 0)
+            {
+                
+                while (p < 3)
+                {
+                   Console.WriteLine("Please choose what card to change:");
+                   Visualizacion.ShowHand(ActivePlayer.Hand);
+                   int choice4= Visualizacion.GetUserInput(10, true);
+                   if (choice4 == -1)
+                   {
+                        break;
+                   }
+                   ActivePlayer.ChangeCard(choice4);
+                   p++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Player "+ ActivePlayer.Id+" has passed");
+            }
+            Console.WriteLine("Player " + ActivePlayer.Id + " has finished his turn 0 play");
+            Console.ReadKey();
+            Visualizacion.ClearConsole();
+
+
+
         }
         public void AddDecks()
         {
