@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Laboratorio_5_OOP_201902.Cards;
+using Laboratorio_5_OOP_201902.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
@@ -19,18 +21,19 @@ namespace Laboratorio_5_OOP_201902
                 if (hand.Cards[i].GetType().Name == nameof(CombatCard))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write( $"|({hand.Cards[i].Id}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} :{hand.Cards[i].AttackPoints} |");
+                    CombatCard Combi =(CombatCard)hand.Cards[i];
+                    Console.Write( $"|({i}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} :{Combi.AttackPoints} |");
                     Console.ResetColor();
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleCole.Blue;
-                    Console.Write( $"|({hand.Cards[i].Id}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} |");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write( $"|({i}) " + hand.Cards[i].Name + $" {hand.Cards[i].Type} |");
                     Console.ResetColor();
                 }
 
             }
-            Console.Writeline();
+            Console.WriteLine("");
             
         }
         public static void ShowDecks(List<Deck> decks)
@@ -72,7 +75,7 @@ namespace Laboratorio_5_OOP_201902
                     option = Console.ReadLine();
                 }
 
-                if (-1 < optionNumber < maxInput)
+                if (-1 < optionNumber & optionNumber < maxInput)
                 {
                     return optionNumber;
                 }
@@ -90,7 +93,7 @@ namespace Laboratorio_5_OOP_201902
                     option = Console.ReadLine();
                 }
 
-                if (0 < optionNumber < maxInput)
+                if (0 < optionNumber & optionNumber < maxInput)
                 {
                     return optionNumber;
                 }
@@ -104,7 +107,7 @@ namespace Laboratorio_5_OOP_201902
             
            
         }
-        public static void ShowListOption(string message=null, List<String> options)
+        public static void ShowListOption(List<String> options,string message=null)
         {
             Console.WriteLine(message);
             for (int i = 0; i < options.Count; i++)
@@ -117,6 +120,7 @@ namespace Laboratorio_5_OOP_201902
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(message);
             Console.ResetColor();
+            
         }
     }
 }
